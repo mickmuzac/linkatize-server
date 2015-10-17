@@ -1,0 +1,8 @@
+{
+  "author": "Mick Muzac",
+  "dependencies": {
+    "socket.io": "^1.3.7",
+    "express": "^4.13.3",
+    "aws-lib": "^0.3.0"
+  }
+}
