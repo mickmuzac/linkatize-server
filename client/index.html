@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="HandheldFriendly" content="true">
+    <title>Price x 4</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="js/app.js"></script>
+  </head>
+  <body ng-app="pricex4">
+    <div ng-controller="BaseController" class="container">
+      <input ng-model="data.keywords" ng-model-options="{debounce: {'default': 750}}">
+      <div ng-repeat="item in data.items">
+        <ul>
+          <li>{{item.title}}</li>
+          <li>{{item.by}}</li>
+          <li>{{item.group}}</li>
+          <li>{{item.price/100|currency}} (US)</li>
+          <li><a href="{{item.url}}"><img src="{{item.large}}"></a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>

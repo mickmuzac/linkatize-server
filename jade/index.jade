@@ -1,0 +1,24 @@
+//output:../client/index.html
+doctype html
+html(lang="en")
+
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+    meta(name='HandheldFriendly', content='true')
+    
+    title Price x 4
+    script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js')
+    script(src='js/app.js')
+  body(ng-app="pricex4")
+    .container(ng-controller="BaseController")
+        
+        input(ng-model="data.keywords" ng-model-options="{debounce: {'default': 750}}")
+        div(ng-repeat="item in data.items")
+            ul
+                li {{item.title}}
+                li {{item.by}}
+                li {{item.group}}
+                li {{item.price/100|currency}} (US)
+                li #[a(href="{{item.url}}") #[img(src="{{item.large}}")]]
+    
