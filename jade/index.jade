@@ -12,13 +12,21 @@ html(lang="en")
     script(src='js/app.js')
   body(ng-app="pricex4")
     .container(ng-controller="BaseController")
-        
-        input(ng-model="data.keywords" ng-model-options="{debounce: {'default': 750}}")
-        div(ng-repeat="item in data.items")
+        button(ng-click="getRandom()") Randomize
+        div(style="width:49%; float:left;")
             ul
-                li {{item.title}}
-                li {{item.by}}
-                li {{item.group}}
-                li {{item.price/100|currency}} (US)
-                li #[a(href="{{item.url}}") #[img(src="{{item.large}}")]]
+                li {{guess.title}}
+                li {{guess.by}}
+                li {{guess.group}}
+                li {{guess.price/100|currency}} (US)
+                li #[a(href="{{guess.url}}") #[img(src="{{guess.large}}")]]
+        div(style="width:49%; float:right;")
+            div(ng-repeat="obj in data")
+                div(ng-repeat="item in obj.items")
+                    ul
+                        li {{item.title}}
+                        li {{item.by}}
+                        li {{item.group}}
+                        li {{item.price/100|currency}} (US)
+                        li #[a(href="{{item.url}}") #[img(src="{{item.large}}")]]
     

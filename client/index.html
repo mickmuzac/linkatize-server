@@ -10,15 +10,28 @@
   </head>
   <body ng-app="pricex4">
     <div ng-controller="BaseController" class="container">
-      <input ng-model="data.keywords" ng-model-options="{debounce: {'default': 750}}">
-      <div ng-repeat="item in data.items">
+      <button ng-click="getRandom()">Randomize</button>
+      <div style="width:49%; float:left;">
         <ul>
-          <li>{{item.title}}</li>
-          <li>{{item.by}}</li>
-          <li>{{item.group}}</li>
-          <li>{{item.price/100|currency}} (US)</li>
-          <li><a href="{{item.url}}"><img src="{{item.large}}"></a></li>
+          <li>{{guess.title}}</li>
+          <li>{{guess.by}}</li>
+          <li>{{guess.group}}</li>
+          <li>{{guess.price/100|currency}} (US)</li>
+          <li><a href="{{guess.url}}"><img src="{{guess.large}}"></a></li>
         </ul>
+      </div>
+      <div style="width:49%; float:right;">
+        <div ng-repeat="obj in data">
+          <div ng-repeat="item in obj.items">
+            <ul>
+              <li>{{item.title}}</li>
+              <li>{{item.by}}</li>
+              <li>{{item.group}}</li>
+              <li>{{item.price/100|currency}} (US)</li>
+              <li><a href="{{item.url}}"><img src="{{item.large}}"></a></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </body>

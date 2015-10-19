@@ -2,14 +2,21 @@ var app = angular.module('pricex4', []);
 
 app.controller('BaseController', ['$scope', '$http', function($scope, $http){
 
-    $scope.data = {keywords: "road bike"};
+    $scope.data = [];
+    $scope.guess;
 
     $scope.$watch('data.keywords', function(val, old){
         console.log("Update!");
         if(val && val != old){
-            updateList();
+        //    updateList();
         }
     });
+
+    $scope.getRandom = function(){
+        var randCat = Math.floor(Math.random() * $scope.data.length);
+        var randItem = Math.floor(Math.random() * $scope.data[randCat].items.length);
+        $scope.guess =  $scope.data[randCat].items[randItem];
+    }
 
     updateData();
 
@@ -23,6 +30,7 @@ app.controller('BaseController', ['$scope', '$http', function($scope, $http){
         $http.get('/out.json').then(function(res){
             console.log(res, res.data);
             $scope.data = res.data;
+            $scope.getRandom();
         });
     }
 }]);
